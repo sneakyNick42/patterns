@@ -1,0 +1,2 @@
+# patterns
+Python patterns study
