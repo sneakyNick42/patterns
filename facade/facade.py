@@ -62,5 +62,5 @@ class SortingTimeFacade:
 
 
 if __name__ == '__main__':
-    sorting_facade = SortingTimeFacade()
-    sorting_facade.sort(ARRAY)
+    SORTING_FACADE = SortingTimeFacade()
+    SORTING_FACADE.sort(ARRAY)
