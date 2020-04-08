@@ -1,13 +1,22 @@
 """Factory pattern."""
 
 
+def speaker(func):
+    """Speaker decorator."""
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print('{0} says \'{1}\''.format(args[0].__class__.__name__, result))
+
+    return wrapper
+
+
 class Dog:
     """Dog class."""
     def __init__(self, name) -> None:
         self._name = name
 
-    @staticmethod
-    def speak():
+    @speaker
+    def speak(self):
         """Speak."""
         return 'Woof!'
 
@@ -17,21 +26,21 @@ class Cat:
     def __init__(self, name) -> None:
         self._name = name
 
-    @staticmethod
-    def speak():
+    @speaker
+    def speak(self):
         """Speak."""
         return 'Nya!'
 
 
-class Human:
-    """Human class."""
+class Bender:
+    """Bender class."""
     def __init__(self, name) -> None:
         self._name = name
 
-    @staticmethod
-    def speak():
+    @speaker
+    def speak(self):
         """Speak."""
-        return 'Hello world!'
+        return 'Kill all humans!'
 
 
 def get_pet(pet='dog'):
@@ -39,7 +48,7 @@ def get_pet(pet='dog'):
     pets = dict(
         dog=Dog(name='Lucky'),
         cat=Cat(name='Tom'),
-        human=Human(name='Alex'),
+        human=Bender(name='Alex'),
     )
     return pets[pet]
 
@@ -47,8 +56,8 @@ def get_pet(pet='dog'):
 if __name__ == '__main__':
     CAT = get_pet('cat')
     DOG = get_pet('dog')
-    HUMAN = get_pet('human')
+    BENDER = get_pet('human')
 
-    print(CAT.speak())
-    print(DOG.speak())
-    print(HUMAN.speak())
+    CAT.speak()
+    DOG.speak()
+    BENDER.speak()
