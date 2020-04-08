@@ -1,11 +1,11 @@
-"""Factory pattern."""
+"""Factory pattern module."""
 
 
 def speaker(func):
     """Speaker decorator."""
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
-        print('{0} says \'{1}\''.format(args[0].__class__.__name__, result))
+        print('{0} says \'{1}\''.format(args[0].__name__, result))
 
     return wrapper
 
@@ -15,8 +15,9 @@ class Dog:
     def __init__(self, name) -> None:
         self._name = name
 
+    @classmethod
     @speaker
-    def speak(self):
+    def speak(cls):
         """Speak."""
         return 'Woof!'
 
@@ -26,8 +27,9 @@ class Cat:
     def __init__(self, name) -> None:
         self._name = name
 
+    @classmethod
     @speaker
-    def speak(self):
+    def speak(cls):
         """Speak."""
         return 'Nya!'
 
@@ -37,8 +39,9 @@ class Bender:
     def __init__(self, name) -> None:
         self._name = name
 
+    @classmethod
     @speaker
-    def speak(self):
+    def speak(cls):
         """Speak."""
         return 'Kill all humans!'
 

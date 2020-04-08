@@ -1,11 +1,12 @@
-"""Abstract factory pattern."""
+"""Abstract factory pattern module."""
 from factory.factory import speaker
 
 
 class Dog:
     """Dog class."""
+    @classmethod
     @speaker
-    def speak(self):
+    def speak(cls):
         """Speak."""
         return 'Woof!'
 
@@ -16,11 +17,13 @@ class Dog:
 class DogFactory:
     """Dog factory class."""
 
-    def get_pet(self) -> Dog:
+    @staticmethod
+    def get_pet() -> Dog:
         """Get pet."""
         return Dog()
 
-    def get_food(self):
+    @staticmethod
+    def get_food():
         """Get dog food."""
         return 'Dog food.'
 
